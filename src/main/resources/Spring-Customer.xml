@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+   <bean id="servA" class="com.test.service.ServiceA" scope="singleton" init-method = "init" destroy-method = "destroy">
+    <property name="servB" ><ref bean="servB" /></property>
+   </bean>
+   <bean id="servB" class="com.test.service.ServiceB" scope="prototype" init-method = "init" destroy-method = "destroy">  
+     <property name="servC"><ref bean="servC"/></property>
+   </bean>
+   <bean id="servC" class="com.test.service.ServiceC" scope="singleton" init-method = "init" destroy-method = "destroy"/>
+		
+</beans>
